@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="BaseAddress.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="RequestUsers.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -14,7 +14,7 @@ namespace DepsWebApp.Controllers
     /// <summary>
     /// Auth controller for registrations user 
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("register")]
     [ApiController]
     [AllowAnonymous]
     public class AuthController : ControllerBase

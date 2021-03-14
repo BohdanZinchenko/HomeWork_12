@@ -1,16 +1,16 @@
 ﻿[
   {
-    "Link": "http://localhost:5000/Rates/USD/EUR",
+    "Link": "Rates/USD/EUR",
     "StatusCode": "OK",
     "ExpectedAnswer": null
   },
   {
-    "Link": "http://localhost:5000/Rates/UAH/EUR",
+    "Link": "Rates/UAH/EUR",
     "StatusCode": "OK",
     "ExpectedAnswer": null
   },
   {
-    "Link": "http://localhost:5000/Rates/Uxvcz/EvxcUR",
+    "Link": "Rates/Uxvcz/EvxcUR",
     "StatusCode": "BadRequest"
   }
 

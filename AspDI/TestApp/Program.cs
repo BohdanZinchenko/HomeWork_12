@@ -26,13 +26,15 @@ namespace TestApp
                 return;
             }
             HttpClient client = new HttpClient();
+            var settingsBase = JsonSerializer.Deserialize<BaseAddressJson>(await File.ReadAllTextAsync("BaseAddress.json"));
+            client.BaseAddress = new Uri(settingsBase.BaseAddress);
 
             foreach (var item in jsonUsers)
             {
                 var jsonUser = JsonSerializer.Serialize(item);
                 try
                 {
-                    var responseUser = await client.PostAsync("http://localhost:5000/api/Auth", new StringContent(jsonUser, Encoding.UTF8, "application/json"));
+                    var responseUser = await client.PostAsync("register", new StringContent(jsonUser, Encoding.UTF8, "application/json"));
                     var loginPass = await responseUser.Content.ReadAsStringAsync();
                     client.DefaultRequestHeaders.Add("Authorization", loginPass);
                     Console.WriteLine($"User with login {item.Login} and password {item.Password} is auth");
@@ -50,7 +52,7 @@ namespace TestApp
             {
                 try
                 {
-                    Console.WriteLine($"Start work with {item.Link}");
+                    Console.WriteLine($"Start work with {client.BaseAddress}{item.Link}");
                     await client.GetAsync(item.Link);
                 }
                 catch (Exception e)
@@ -64,7 +66,7 @@ namespace TestApp
                 if (response.StatusCode.ToString() != item.StatusCode)
                 {
                     Console.WriteLine(
-                        $"Request for link {item.Link} return not expected response (expected {item.StatusCode} but found {response.StatusCode})");
+                        $"Request for link {client.BaseAddress}{item.Link} return not expected response (expected {item.StatusCode} but found {response.StatusCode})");
                     continue;
                 }
 
