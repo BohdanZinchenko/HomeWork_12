@@ -1,0 +1,13 @@
+﻿[
+  {
+    "Link": "http://localhost:5000/api/Auth",
+    "Login": "sss",
+    "Password": "sss"
+  },
+  {
+    "Link": "http://localhost:5000/api/Auth",
+    "Login": "string",
+    "Password": "string"
+  }
+  
+]
